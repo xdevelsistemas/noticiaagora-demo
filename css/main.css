@@ -1,0 +1,99 @@
+a, a:hover, a:active, button, button:active, button:hover, .bootstrap-select .dropdown-toggle:focus {
+    outline: 0!important;
+}
+.navbar-inverse {
+    background: #EE312F!important;
+    border: rgba(255, 255, 255, 0);
+    padding: 10px 8%;
+    border-radius: 1px;
+}
+ul {
+    padding: 10px 0 0 40px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgb(189, 19, 19);
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+.loading {
+    width: 100%;
+    border-radius: 0;
+    min-height: 100%;
+    top: 0!important;
+    right: 0!important;
+    width: 100%;
+    min-height: 40px;
+    background: rgba(255,255,255,.8);
+    position: absolute;
+    z-index: 1039;
+    top: 25px;
+    right: 125px;
+}
+
+.btn-default, .btn-default:hover {
+    background: rgba(9,9,9,0)!important;
+    min-height: 40px;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #fff;
+    color: #fff!important;
+}
+
+.open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default.focus, .btn-default:active:hover{
+    border-color: #fff;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background: #fff;
+}
+.dropdown-menu {
+    background-color: rgb(238, 49, 47);
+    border: solid 1px;
+    border-color: #fff;
+    border-top: 0;
+}
+.dropdown-menu > li > a {
+    color: #fff;
+}
+
+i {
+    color: #fff;
+}
