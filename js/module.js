@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('app-NA', [])
+    angular.module('app-NA', ['ngResource'])
     .factory('loading', loading);
     
     /* Funções */

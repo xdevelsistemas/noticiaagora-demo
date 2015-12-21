@@ -1,5 +1,6 @@
 a, a:hover, a:active, button, button:active, button:hover, .bootstrap-select .dropdown-toggle:focus {
     outline: 0!important;
+    font-family: Roboto;
 }
 .navbar-inverse {
     background: #EE312F!important;
@@ -58,13 +59,17 @@ ul {
     min-height: 100%;
     top: 0!important;
     right: 0!important;
-    width: 100%;
+    height: 100%;
     min-height: 40px;
     background: rgba(255,255,255,.8);
     position: absolute;
     z-index: 1039;
     top: 25px;
     right: 125px;
+}
+
+.btn{
+    font-family: Roboto;
 }
 
 .btn-default, .btn-default:hover {
@@ -75,6 +80,42 @@ ul {
     box-shadow: none;
     border-color: #fff;
     color: #fff!important;
+}
+
+.btn-primary {
+    min-height: 40px;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #fff;
+    background: #fff;
+    color: #EE312F;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+.btn-primary:hover {
+    background: #EE312F;
+    color: #FFF;
+    border: 1px solid #fff;
+}
+
+.btn-inverse:hover {
+    background: #fff;
+    color: #EE312F;
+    border: 1px solid #EE312F;
+}
+
+.btn-inverse {
+    min-height: 40px;
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #EE312F;
+    background: #EE312F;
+    color: #fff;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
 }
 
 .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default.focus, .btn-default:active:hover{
@@ -96,4 +137,61 @@ ul {
 
 i {
     color: #fff;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+}
+
+a>i:hover {
+    color: #900200;
+}
+
+.navbar-toggle{
+    margin-top: 22px;
+}
+
+.news {
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+hr {
+    border-top: 1px solid #EE312F;
+}
+
+.about {
+    padding-bottom: 10px;
+}
+
+#nav-rodape a {
+    color: #EB302C;
+}
+#nav-rodape a:hover {
+    color: #AE1511;
+    text-decoration: none;
+}
+
+@media (min-width: 1000px){
+    .logo-rodape {
+        border-right: .0625rem solid #EE312F;
+    }
+}
+
+.fa-black{
+    color: #000;
+}
+
+h2 {
+    color: #EC302D;
+    font-family: Roboto;
+}
+
+p {
+    font-family: Roboto;
+}
+
+.form-control:focus{
+    border-color: #EE312F;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(238,49,47,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(238,49,47,0.6);
 }
