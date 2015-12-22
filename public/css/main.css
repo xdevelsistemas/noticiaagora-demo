@@ -96,7 +96,7 @@ ul {
     transition-duration: .3s;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:hover {
     background: #EE312F;
     color: #FFF;
     border: 1px solid #fff;

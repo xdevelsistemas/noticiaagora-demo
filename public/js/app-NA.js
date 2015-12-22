@@ -12,9 +12,9 @@
         vm.content = [];
         vm.categorias = [
             {"id": 0, "name": "TODAS AS CATEGORIAS"},
-            {"id": 1, "name": "ENTRETENIMENTO"},
-            {"id": 2, "name": "ESPORTES"},
-            {"id": 3, "name": "NOTÍCIAS"}
+            {"id": 1, "name": "NA RUA", "text": "NOTÍCIAS"},
+            {"id": 2, "name": "NA MIXTURA", "text": "ENTRETENIMENTO"},
+            {"id": 3, "name": "NA TORCIDA", "text": "ESPORTES"}
         ];
         /*vm.filter1 = [
             {"id": 0, "name": "+RECENTES"},
@@ -47,14 +47,16 @@
         
         function filterSuccessPromise(data){
             vm.content = data;
+            loading.complete();
         }
         
         function filtrar(){
+            loading.start();
             var promise;
             
             promise = vm._model.categoria.id === 0 ?
                 $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query(filterSuccessPromise).$promise :
-                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.name).query().$promise;
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.text).query().$promise;
             
             
             return promise
