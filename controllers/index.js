@@ -7,10 +7,6 @@ module.exports = function() {
     var homeController = {};
     var site = 'http://www.gazetaonline.com.br';
 
-
-
-
-
     /**
      * redireciona para a documentacao da api
      * @param req
@@ -34,6 +30,7 @@ module.exports = function() {
 
         api.apiCall('public/widget/data',api.method.POST,data)
             .then(function(response){
+            response.data.items = defineRank(response.data.items);
             return res.status(response.status).json(response.data);
             })
             .catch(function(error){
@@ -50,3 +47,10 @@ module.exports = function() {
 
     return homeController;
 };
+
+function defineRank(lstObj){
+    return lstObj.map(function(el){
+        el.rank = Math.random();
+        return el;
+    });
+}
