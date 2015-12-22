@@ -34,14 +34,10 @@
         .catch(failPromise);
         
         function successContent(data){
-            vm.content.push(data.items.filter(function(el){
-                return el.dominantthumbnail && el.title && el.click_url;
-            }));
-            if(c === 3){
-                loading.complete();
-            }else{
-                c++;
-            }
+            data.forEach(function(el){
+                vm.content.push(el);
+            });
+            c === 3?loading.complete():c++;
         }
         
         function failPromise(err){
