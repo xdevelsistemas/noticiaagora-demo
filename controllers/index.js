@@ -28,19 +28,8 @@ module.exports = function() {
             data.widgetId = '6717f25ff501d279d9827ff7f975813821e057df'
         }
 
-        if (req.params.taxonomy){
-
-            data.context = {
-                referrer : site,
-                categories : {
-                    taxonomy : req.params.taxonomy,
-                    source: 'external',
-                    subscriber: 'no'
-                }
-
-            }
-
-
+        if (req.body.context){
+            data.context = req.body.context
         }
 
         api.apiCall('public/widget/data',api.method.POST,data)

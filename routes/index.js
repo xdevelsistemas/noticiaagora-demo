@@ -4,7 +4,7 @@ var site  = 'http://www.gazetaonline.com.br';
 var controller = require('../controllers/index.js')();
 
 /*noticias com taxonomia*/
-router.get('/noticias/:id/:taxonomy', function(req, res, next) {
+router.post('/noticias/:id', function(req, res, next) {
   return controller.call(req,res);
 });
 
