@@ -60,7 +60,7 @@
     <script type="text/javascript" src="/js/module.js"></script>
     <script type="text/javascript" src="/js/app-NA.js"></script>
 </head>
-<body class='inicial' ng-controller="home">
+<body class='inicial' ng-controller="home as na">
     <div class="loading" style="display: none">
         <div class="spinner">
           <div class="double-bounce1"></div>
@@ -118,9 +118,13 @@
         </nav>
         
         <div class="container text-center">
-            <div class="col-md-4 news" ng-repeat="item in na.content">
-                <img ng-src="item.dominantthumbnail">
-                <h2 ng-bind="item.title"></h2>
+            <div class="row" ng-repeat="row in na.content">
+                <div class="col-md-4 news" ng-repeat="item in row | limitTo: 3">
+                    <a href="{{item.click_url}}" target="_blank">
+                        <img class="imgNews" height="300" ng-src="{{item.dominantthumbnail}}">
+                        <h2 ng-bind="item.title"></h2>
+                    </a>
+                </div>
             </div>
         </div>
         

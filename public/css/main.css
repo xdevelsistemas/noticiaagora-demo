@@ -2,6 +2,9 @@ a, a:hover, a:active, button, button:active, button:hover, .bootstrap-select .dr
     outline: 0!important;
     font-family: Roboto;
 }
+a:hover, a:active, a:focus {
+    text-decoration: none;
+}
 .navbar-inverse {
     background: #EE312F!important;
     border: rgba(255, 255, 255, 0);
@@ -56,11 +59,10 @@ ul {
 .loading {
     width: 100%;
     border-radius: 0;
-    min-height: 100%;
     top: 0!important;
     right: 0!important;
-    height: 100%;
-    min-height: 40px;
+    height: 100vh;
+    min-height: 100vh;
     background: rgba(255,255,255,.8);
     position: absolute;
     z-index: 1039;
@@ -152,6 +154,12 @@ a>i:hover {
 .news {
     overflow: hidden;
     padding-top: 15px;
+    max-height: 400px;
+}
+
+img.imgNews {
+    text-align: center;
+    vertical-align: middle;
 }
 
 hr {
