@@ -21,11 +21,22 @@ module.exports = function() {
         if (req.params.id) {
             data.widgetId = req.params.id;
         }else{
-            data.widgetId = '6717f25ff501d279d9827ff7f975813821e057df'
+            data.widgetId = '56d2a5e83fc99ee616803252a69e0b5ac5c9ca5f'
         }
+
+        if (req.params.categoria) {
+            data.user = {
+                "likes": {"categories": ["conteudo/"+ req.params.categoria.toLowerCase()]}
+            }
+        }
+
 
         if (req.body.context){
             data.context = req.body.context
+        }
+
+        if (req.body.user){
+            data.user = req.body.user
         }
 
         api.apiCall('public/widget/data',api.method.POST,data)
