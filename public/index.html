@@ -82,12 +82,12 @@
             </div>
 
             <div class="collapse navbar-collapse js-navbar-collapse">
-                <ul class="nav navbar-nav" style="padding-left: 20px">
+                <!--<ul class="nav navbar-nav" style="padding-left: 20px">
                     <li style="padding-top: 10px">
                         <select class="selectpicker" ng-model="na._model.filter" ng-options="option.name for option in na.filter1 track by option.id">
                         </select>
                     </li>
-                </ul>
+                </ul>-->
                 <ul class="nav navbar-nav" style="padding-left: 20px">
                     <li style="padding-top: 10px">
                         <select class="selectpicker" name="categorias" ng-model="na._model.categoria" ng-options="option.name for option in na.categorias track by option.id">
@@ -97,7 +97,7 @@
                 <ul class="nav navbar-nav" style="padding-left: 20px">
                    <li style="padding-top: 10px">
                       <div class="btn-group bootstrap-select dropup">
-                         <button class="btn btn-primary">FILTRAR</button>
+                         <button class="btn btn-primary" ng-click="na.filtrar()">FILTRAR</button>
                       </div>
                    </li>
                 </ul>

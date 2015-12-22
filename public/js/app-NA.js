@@ -7,7 +7,7 @@
         loading.start();
         
         /* jshint validthis: true */
-        var vm = this, c=0;
+        var vm = this;
         
         vm.content = [];
         vm.categorias = [
@@ -16,10 +16,10 @@
             {"id": 2, "name": "ESPORTES"},
             {"id": 3, "name": "NOTÍCIAS"}
         ];
-        vm.filter1 = [
+        /*vm.filter1 = [
             {"id": 0, "name": "+RECENTES"},
             {"id": 1, "name": "+ACESSADAS"}
-        ];
+        ];*/
         vm._model = {
             categoria: {"id": 0, "name": "TODAS AS CATEGORIAS"},
             filter: {"id": 0, "name": "+RECENTES"}
@@ -28,24 +28,9 @@
         vm.filtrar = filtrar;
         
         
-        var content1Promise = $resource('/rest/noticias').query().$promise,
-            content2Promise = $resource('/rest/noticias').query().$promise,
-            content3Promise = $resource('/rest/noticias').query().$promise,
-            content4Promise = $resource('/rest/noticias').query().$promise;
+        var content1Promise = $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
         
         content1Promise
-        .then(successContent)
-        .catch(failPromise);
-        
-        content2Promise
-        .then(successContent)
-        .catch(failPromise);
-        
-        content3Promise
-        .then(successContent)
-        .catch(failPromise);
-        
-        content4Promise
         .then(successContent)
         .catch(failPromise);
         
@@ -53,15 +38,28 @@
             data.forEach(function(el){
                 vm.content.push(el);
             });
-            c === 3?loading.complete():c++;
+            loading.complete();
         }
         
         function failPromise(err){
             console.log(err);
         }
         
+        function filterSuccessPromise(data){
+            vm.content = data;
+        }
+        
         function filtrar(){
-            $resource('/rest/noticias')
+            var promise;
+            
+            promise = vm._model.categoria.id === 0 ?
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query(filterSuccessPromise).$promise :
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.name).query().$promise;
+            
+            
+            return promise
+                .then(filterSuccessPromise)
+                .catch(failPromise);
         }
         
     }
