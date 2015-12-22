@@ -4,48 +4,64 @@
     .controller('home', ['$scope', '$timeout', 'loading', '$resource', home]);
     
     function home($scope, $timeout, loading, $resource){
-        /* jshint validthis: true */
-        var vm = this, c=0;
-        
-        vm.content = [];
-        
         loading.start();
         
+        /* jshint validthis: true */
+        var vm = this;
         
-        var content1Promise = $resource('/rest/noticias').get().$promise,
-            content2Promise = $resource('/rest/noticias').get().$promise,
-            content3Promise = $resource('/rest/noticias').get().$promise,
-            content4Promise = $resource('/rest/noticias').get().$promise;
+        vm.content = [];
+        vm.categorias = [
+            {"id": 0, "name": "TODAS AS CATEGORIAS"},
+            {"id": 1, "name": "NA RUA", "text": "NOTÍCIAS"},
+            {"id": 2, "name": "NA MIXTURA", "text": "ENTRETENIMENTO"},
+            {"id": 3, "name": "NA TORCIDA", "text": "ESPORTES"}
+        ];
+        /*vm.filter1 = [
+            {"id": 0, "name": "+RECENTES"},
+            {"id": 1, "name": "+ACESSADAS"}
+        ];*/
+        vm._model = {
+            categoria: {"id": 0, "name": "TODAS AS CATEGORIAS"},
+            filter: {"id": 0, "name": "+RECENTES"}
+        };
+        
+        vm.filtrar = filtrar;
+        
+        
+        var content1Promise = $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
         
         content1Promise
         .then(successContent)
         .catch(failPromise);
         
-        content2Promise
-        .then(successContent)
-        .catch(failPromise);
-        
-        content3Promise
-        .then(successContent)
-        .catch(failPromise);
-        
-        content4Promise
-        .then(successContent)
-        .catch(failPromise);
-        
         function successContent(data){
-            vm.content.push(data.items.filter(function(el){
-                return el.dominantthumbnail && el.title && el.click_url;
-            }));
-            if(c === 3){
-                loading.complete();
-            }else{
-                c++;
-            }
+            data.forEach(function(el){
+                vm.content.push(el);
+            });
+            loading.complete();
         }
         
         function failPromise(err){
             console.log(err);
+        }
+        
+        function filterSuccessPromise(data){
+            vm.content = data;
+            loading.complete();
+        }
+        
+        function filtrar(){
+            loading.start();
+            var promise;
+            
+            promise = vm._model.categoria.id === 0 ?
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query(filterSuccessPromise).$promise :
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.text).query().$promise;
+            
+            
+            return promise
+                .then(filterSuccessPromise)
+                .catch(failPromise);
         }
         
     }

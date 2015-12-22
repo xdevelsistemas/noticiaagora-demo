@@ -22,6 +22,7 @@
         }
         
         function start(){
+            _toTop();
             disableScroll();
             lg.$loading.fadeIn(800)
         }
@@ -62,6 +63,13 @@
                 preventDefault(e);
                 return false;
             }
+        }
+        
+        function _toTop(){
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000);
+            return true;
         }
     }
 })();
