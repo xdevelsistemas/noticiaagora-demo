@@ -30,8 +30,11 @@ module.exports = function() {
 
         api.apiCall('public/widget/data',api.method.POST,data)
             .then(function(response){
-            response.data.items = defineRank(response.data.items);
-            return res.status(response.status).json(response.data);
+                // eliminando itens inválidos
+            var itens = response.data.items.filter(function(item){
+                return (item.dominantthumbnail && item.description && item.title && item.click_url && item.url)
+            });
+            return res.status(response.status).json(itens);
             })
             .catch(function(error){
                 return res.status(500).json(error);
