@@ -19,6 +19,7 @@
         .catch(failPromise);
         
         function successContent(data){
+            vm.content = data.items;
             //todo renderizar o objeto
             loading.complete();
         }

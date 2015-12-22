@@ -23,19 +23,24 @@ module.exports = function() {
         var data = {};
 
         if (req.params.id) {
-            data.widgetId = id;
+            data.widgetId = req.params.id;
         }else{
             data.widgetId = '6717f25ff501d279d9827ff7f975813821e057df'
         }
 
         if (req.params.taxonomy){
-            data.referrer = site;
 
             data.context = {
-                taxonomy : taxonomy,
-                source: 'external',
-                subscriber: 'no'
+                referrer : site,
+                categories : {
+                    taxonomy : req.params.taxonomy,
+                    source: 'external',
+                    subscriber: 'no'
+                }
+
             }
+
+
         }
 
         api.apiCall('public/widget/data',api.method.POST,data)
