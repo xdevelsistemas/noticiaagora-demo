@@ -153,8 +153,8 @@ a>i:hover {
 
 .news {
     overflow: hidden;
-    
-    
+    max-height: 380.844px;
+    padding-bottom: 395px;
 }
 
 img.imgNews {
