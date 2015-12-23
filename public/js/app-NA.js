@@ -28,8 +28,8 @@
         vm.filtrar = filtrar;
         
         var content1Promise = $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
-        var pb = {ads: true, id: 'pna1-'+Math.random(), rank: Math.random()};
-        var pb2 = {ads: true, id: 'pna2-'+Math.random(), rank: Math.random()};
+        var pb = {ads: true, id: 'pna1-'+Math.random(), rank: Math.random(), text: "Publicidade"};
+        var pb2 = {ads: true, id: 'pna2-'+Math.random(), rank: Math.random(), text: "Publicidade"};
         vm.content.push(pb);
         vm.content.push(pb2);
         
