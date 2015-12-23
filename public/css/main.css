@@ -156,6 +156,11 @@ a>i:hover {
     max-height: 380.844px;
     padding-bottom: 395px;
 }
+.ads {
+    padding: 26px;
+    background-color: #f0f0f0;
+    max-height: 380.844px;
+}
 
 img.imgNews {
     text-align: center;

@@ -1,9 +1,39 @@
 (function(){
     'use strict';
     angular.module('app-NA', ['ngResource'])
-    .factory('loading', loading);
+    .factory('loading', loading)
+    .factory('ads', ads);
     
     /* Funções */
+    function ads() {
+        var c = angular.isUndefined(window.googletag);
+        window.googletag = window.googletag || {};
+        window.googletag.cmd = window.googletag.cmd || [];
+
+        if(c){
+            window.gads = document.createElement('script');
+            window.gads.async = true;
+            window.gads.type = 'text/javascript';
+            window.useSSL = 'https:' == document.location.protocol;
+            window.gads.src = (window.useSSL ? 'https:' : 'http:') +
+              '//www.googletagservices.com/tag/js/gpt.js';
+            window.node = document.getElementsByTagName('script')[0];
+            window.node.parentNode.insertBefore(window.gads, window.node);
+        }
+        
+        return {
+            setAdsDiv: setAdsDiv
+        }
+        
+        function setAdsDiv(id){
+            window.googletag.cmd.push(function() {
+            window.googletag.defineSlot('/1028927/NA_Capa_retangulo_300x250', [300, 250], id).addService(googletag.pubads());
+            window.googletag.pubads().enableSingleRequest();
+            window.googletag.enableServices();
+          });
+        }
+    }
+    
     function loading($timeout) {
         
         var lg = {}, keys = {37: 1, 38: 1, 39: 1, 40: 1};
@@ -72,4 +102,5 @@
             return true;
         }
     }
+    
 })();
