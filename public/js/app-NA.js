@@ -29,7 +29,9 @@
         
         var content1Promise = $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
         var pb = {ads: true, id: 'pna1-'+Math.random(), rank: Math.random()};
+        var pb2 = {ads: true, id: 'pna2-'+Math.random(), rank: Math.random()};
         vm.content.push(pb);
+        vm.content.push(pb2);
         
         content1Promise
         .then(successContent)
@@ -37,7 +39,8 @@
         
         function pbReady(){
             ads.setAdsDiv(pb.id);
-            window.googletag.cmd.push(function() { googletag.display(pb.id); });
+            ads.setAdsDiv(pb2.id);
+            window.googletag.cmd.push(function() { googletag.display(pb.id);googletag.display(pb2.id); });
         }
         
         function successContent(data){
@@ -57,6 +60,7 @@
         function filterSuccessPromise(data){
             vm.content = data;
             vm.content.push(pb);
+            vm.content.push(pb2);
             angular.element(document).ready(pbReady);
             loading.complete();
         }
