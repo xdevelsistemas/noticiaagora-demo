@@ -28,8 +28,8 @@
         vm.filtrar = filtrar;
         
         var content1Promise = $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
-        var pb = {ads: true, id: 'pna1-'+Math.random(), rank: Math.random(), text: "Publicidade"};
-        var pb2 = {ads: true, id: 'pna2-'+Math.random(), rank: Math.random(), text: "Publicidade"};
+        var pb = {ads: true, id: 'pna1-'+Math.random(), text: "Publicidade"};
+        var pb2 = {ads: true, id: 'pna2-'+Math.random(), text: "Publicidade"};
         vm.content.push(pb);
         vm.content.push(pb2);
         
@@ -44,12 +44,8 @@
         }
         
         function successContent(data){
-            data.forEach(function(el){
-                if(vm.content.length < 12){
-                    vm.content.push(el);
-                }
-            });
-            angular.element(document).ready(pbReady);
+            vm.content = data;
+            insertAds();
             loading.complete();
         }
         
@@ -59,9 +55,7 @@
         
         function filterSuccessPromise(data){
             vm.content = data;
-            vm.content.push(pb);
-            vm.content.push(pb2);
-            angular.element(document).ready(pbReady);
+            insertAds();
             loading.complete();
         }
         
@@ -77,6 +71,15 @@
             return promise
                 .then(filterSuccessPromise)
                 .catch(failPromise);
+        }
+
+        function insertAds(){
+            var pos1 = Math.round(Math.random() * 9)+ 2,
+                pos2 = Math.round(Math.random() * 9)+2;
+            pos1 = pos1===pos2?Math.round(Math.random() * 9)+ 2:pos1;
+            vm.content[pos1] = pb;
+            vm.content[pos2] = pb2;
+            angular.element(document).ready(pbReady);
         }
         
     }
