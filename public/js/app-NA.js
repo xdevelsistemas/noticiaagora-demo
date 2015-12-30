@@ -53,23 +53,17 @@
             console.log(err);
         }
         
-        function filterSuccessPromise(data){
-            vm.content = data;
-            insertAds();
-            loading.complete();
-        }
-        
         function filtrar(){
             loading.start();
             var promise;
             
             promise = vm._model.categoria.id === 0 ?
-                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query(filterSuccessPromise).$promise :
+                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise :
                 $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.text).query().$promise;
             
             
             return promise
-                .then(filterSuccessPromise)
+                .then(successContent)
                 .catch(failPromise);
         }
 
