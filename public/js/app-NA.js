@@ -68,9 +68,9 @@
         }
 
         function insertAds(){
-            var pos1 = Math.round(Math.random() * 9)+ 2,
-                pos2 = Math.round(Math.random() * 9)+2;
-            pos1 = pos1===pos2?Math.round(Math.random() * 9)+ 2:pos1;
+            var pos1 = Math.round(Math.random() * 8)+3,
+                pos2 = Math.round(Math.random() * 8)+3;
+            pos1 = pos1===pos2?Math.round(Math.random() * 8)+3:pos1;
             vm.content[pos1] = pb;
             vm.content[pos2] = pb2;
             angular.element(document).ready(pbReady);
