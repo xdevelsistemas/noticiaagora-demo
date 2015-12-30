@@ -45,7 +45,7 @@ module.exports = function() {
             var itens = response.data.items.filter(function(item){
                 return (item.dominantthumbnail && item.description && item.title && item.click_url && item.url)
             });
-            return res.status(response.status).json(itens.map(function(el){el.rank = Math.random(); return el;}));
+            return res.status(response.status).json(itens);
             })
             .catch(function(error){
                 return res.status(500).json(error);
@@ -61,10 +61,3 @@ module.exports = function() {
 
     return homeController;
 };
-
-function defineRank(lstObj){
-    return lstObj.map(function(el){
-        el.rank = Math.random();
-        return el;
-    });
-}
