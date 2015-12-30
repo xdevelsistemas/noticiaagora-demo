@@ -65,17 +65,18 @@
                 </ul>-->
                 <ul class="nav navbar-nav" style="padding-left: 20px">
                     <li style="padding-top: 10px">
-                        <select class="selectpicker" name="categorias" ng-model="na._model.categoria" ng-options="option.name for option in na.categorias track by option.id">
+                        <select class="selectpicker" name="categorias" ng-model="na._model.categoria"
+                                ng-options="option.name for option in na.categorias track by option.id" ng-change="na.filtrar()">
                         </select>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav" style="padding-left: 20px">
+                <!--<ul class="nav navbar-nav" style="padding-left: 20px">
                    <li style="padding-top: 10px">
                       <div class="btn-group bootstrap-select dropup">
                          <button class="btn btn-primary" ng-click="na.filtrar()">FILTRAR</button>
                       </div>
                    </li>
-                </ul>
+                </ul>-->
                 <ul class="nav navbar-nav navbar-right visible-md visible-lg visible-sm">
                     <li>
                         <a href="#"><i class="fa fa-facebook-f fa-2x"></i></a>
