@@ -14,7 +14,8 @@
             {"id": 0, "name": "TODAS AS CATEGORIAS"},
             {"id": 1, "name": "NA RUA", "text": "NOTÍCIAS"},
             {"id": 2, "name": "NA MIXTURA", "text": "ENTRETENIMENTO"},
-            {"id": 3, "name": "NA TORCIDA", "text": "ESPORTES"}
+            {"id": 3, "name": "NA TORCIDA", "text": "ESPORTES"},
+            {"id": 4, "name": "SEU NA", "text": "SEU NA"}
         ];
         /*vm.filter1 = [
             {"id": 0, "name": "+RECENTES"},
@@ -57,10 +58,7 @@
             loading.start();
             var promise;
             
-            promise = vm._model.categoria.id === 0 ?
-                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise :
-                $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.text).query().$promise;
-            
+            promise = definePromiseFilter(vm._model.categoria.id);
             
             return promise
                 .then(successContent)
@@ -74,6 +72,16 @@
             vm.content[pos1] = pb;
             vm.content[pos2] = pb2;
             angular.element(document).ready(pbReady);
+        }
+
+        function definePromiseFilter(id){
+            if(id === 0){
+                return $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df').query().$promise;
+            }
+            if(id === 4){
+                return $resource('/rest/noticias/05b3091cd9dabac57a6e1449231a99c20df9f02e').query().$promise;
+            }
+            return $resource('/rest/noticias/6717f25ff501d279d9827ff7f975813821e057df/'+vm._model.categoria.text).query().$promise;
         }
         
     }
