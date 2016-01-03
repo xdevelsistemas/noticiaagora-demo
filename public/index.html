@@ -89,7 +89,7 @@
         </nav>
         
         <div class="container text-center">
-            <div class="row">
+            <div class="row" style="padding-right: 30px">
                 <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in na.content | limitTo: 12" ng-class="{'news': !item.ads, 'ads': item.ads}">
                     <div ng-if="item.ads" style="height: 250px" id="{{item.id||Math.random()}}"></div>
                     <a ng-if="!item.ads" href="{{item.click_url}}" target="_blank">
